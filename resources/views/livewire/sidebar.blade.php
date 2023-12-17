@@ -21,7 +21,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-header">EXAMPLES</li>
-                @foreach ($events as $event)
+                @foreach ($allEvents as $event)
                     <livewire:nav-item :event="$event" />
                 @endforeach
                 <li class="nav-header">EXAMPLES</li>

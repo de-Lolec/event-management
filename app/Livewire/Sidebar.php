@@ -10,15 +10,17 @@ use Livewire\Component;
 
 class Sidebar extends Component
 {
-    public Collection $events;
+    public Collection $allEvents;
 
-    public $userCreatedEvents;
+    public Collection $userCreatedEvents;
 
     public function mount()
     {
-      $this->userCreatedEvents = Auth::user()->createdEvents()->get();
+      $user = Auth::user();
 
-      $this->events = Event::all();
+      $this->userCreatedEvents = $user->createdEvents()->get();
+
+      $this->allEvents = Event::where('participant_id', '!=', $user->id)->get();
     }
   
     public function render()
