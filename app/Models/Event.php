@@ -22,8 +22,8 @@ class Event extends Model
       return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function participant(): BelongsTo
+    public function participants(): BelongsTo
     {
-      return $this->belongsTo(User::class, 'parcipant_id');
+      return $this->belongsTo(User::class, 'participant_id');
     }
 }

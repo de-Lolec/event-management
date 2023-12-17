@@ -39,3 +39,5 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+Route::get('/admin/event/{id}', [AdminController::class, 'show'])->name('event');

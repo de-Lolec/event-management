@@ -1,4 +1,4 @@
-@extends('adminlte::master')
+@extends('adminlte::page')
 
 @inject('layoutHelper', 'JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper')
 
@@ -71,7 +71,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-header">EXAMPLES</li>
-                <livewire:nav-item />
+                {{-- <livewire:nav-item /> --}}
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="calendar.html" class="nav-link">
