@@ -17,7 +17,6 @@
   <div class="content-wrapper" style="min-height: 1604.19px;">
     {{-- <livewire:header :event="$event"/> --}}
     @if(isset($event))
-    {{-- @dd($event) --}}
       <livewire:content :event="$event"/>
     @else
       <p>Пусто</p>
