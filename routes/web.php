@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +37,5 @@ require __DIR__.'/auth.php';
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
