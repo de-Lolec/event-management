@@ -22,11 +22,11 @@
                 data-accordion="false">
                 <li class="nav-header">EXAMPLES</li>
                 @foreach ($allEvents as $event)
-                    <livewire:nav-item :event="$event" />
+                    <livewire:nav-item :event="$event" wire:key="{{ $event->id }}"/>
                 @endforeach
                 <li class="nav-header">EXAMPLES</li>
                 @foreach ($userCreatedEvents as $userCreatedEvent)
-                    <livewire:nav-item :event="$userCreatedEvent" />
+                    <livewire:nav-item :event="$userCreatedEvent" wire:key="{{ $userCreatedEvent->id }}"/>
                 @endforeach
                 {{-- <li class="nav-item">
                     <a href="calendar.html" class="nav-link">

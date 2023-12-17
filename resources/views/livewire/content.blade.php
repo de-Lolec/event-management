@@ -7,24 +7,36 @@
                         <div class="col-12">
                             <h4>
                                 {{ $event->title }}
-                                <small class="float-right">Date: 2/10/2014</small>
                             </h4>
                         </div>
                     </div>
                     <div class="row invoice-info">
-                        <div class="col-sm-4 invoice-col">
-                          <p>{{ $event->text }}</p>
+                        <div class="col-md-4 invoice-col">
+                          <p class="mb-0">{{ $event->text }}</p>
+                          <p>Дата: {{ $event->created_at->format('H:m d.m.y') }}</p>
                         </div>
                     </div>
                     <div>
                       <h5>Participants:</h5>
                       <div class="table-responsive">
                         <ul class="ml-2 fa-ul ">
-                          @foreach ($event->participants()->get() as $participant)
+                          @foreach ($event->participant()->get() as $participant)
                               <li>{{ $participant->name }} {{ $participant->surname }}</li>
                           @endforeach
                       </ul>
                       </div>
+                      {{-- @dd($event->creator()->first()) --}}
+                      {{-- @dd($event->participant()->where('id', auth()->user()->id)->exists()) --}}
+                      @if(!$event->participant()->where('id', auth()->user()->id)->exists())
+                      <x-adminlte-button 
+                        label="Участвовать" 
+                        theme="primary" 
+                        wire:click='participate'/>
+                      @else
+                        <x-adminlte-button 
+                        label="Отказаться от участия" 
+                        theme="danger"/>
+                      @endif
                   </div>
                 </div>
             </div>
