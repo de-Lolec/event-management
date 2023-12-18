@@ -7,10 +7,6 @@
     @yield('css')
 @stop
 
-{{-- @section('classes_body', $layoutHelper->makeBodyClasses())
-
-@section('body_data', $layoutHelper->makeBodyData()) --}}
-
 @section('body')
 <div class="wrapper">
   <livewire:sidebar />
@@ -33,19 +29,4 @@
 @section('adminlte_js')
     @stack('js')
     @yield('js')
-@stop
-
-{{-- @section('title', 'Dashboard') --}}
-
-{{-- @section('content_header')
-    <h1>Dashboard</h1>
-@stop --}}
-
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
 @stop

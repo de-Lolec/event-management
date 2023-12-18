@@ -1,4 +1,4 @@
-<li class="nav-item"  >
+<li class="nav-item" wire:poll.30s>
     <a href="{{ route('event', ['id' => $event->id]) }}" 
         class="nav-link {{ $event->id == session()->get('eventId') ? 'active' : '' }}"
         >

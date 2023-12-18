@@ -16,6 +16,7 @@ class Sidebar extends Component
 
     public Collection $userCreatedEvents;
 
+
     public function mount()
     {
         $this->updateSidebar();

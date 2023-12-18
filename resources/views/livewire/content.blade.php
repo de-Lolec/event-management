@@ -1,4 +1,4 @@
-<section class="content pt-4">
+<section class="content pt-4" wire:poll.30s>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div>
-                      <h5>Participants:</h5>
+                      <h5>Участники:</h5>
                       <div class="table-responsive">
                         <ul class="ml-2 fa-ul ">
                           @foreach ($event->participant()->get() as $participant)
@@ -29,22 +29,22 @@
                                 {{ $participant->surname }}
                                 </a>
                               </li>
-                              <x-adminlte-modal id="modalPurple" title="Theme Purple" theme="purple" size='lg'>
+                              <x-adminlte-modal id="modalPurple" title="О пользователе" theme="purple" size='lg'>
                                 <ul class="ml-2 fa-ul ">
                                     <li>
-                                        Login: {{ $participant->login }}
+                                        Логин: {{ $participant->login }}
                                     </li>
                                     <li>
-                                        Name: {{ $participant->name }}
+                                        Имя: {{ $participant->name }}
                                     </li>
                                     <li>
-                                        Surname: {{ $participant->surname }}
+                                        Фамилия: {{ $participant->surname }}
                                     </li>
                                     <li>
-                                        Date Birth: {{ $participant->date_birth }}
+                                        Дата рождения: {{ $participant->date_birth }}
                                     </li>
                                     <li>
-                                        Registered: {{ $participant->created_at }}
+                                        Зарегистрирован: {{ $participant->created_at }}
                                     </li>
                                 </ul>
                               </x-adminlte-modal>
@@ -53,13 +53,13 @@
                       </div>
                       @if(!$event->participant()->where('user_id', auth()->user()->id)->exists())
                       <x-adminlte-button 
-                        label="Participate" 
+                        label="Принять участие" 
                         theme="primary" 
                         wire:click='participate'
                         />
                       @else
                         <x-adminlte-button 
-                        label="Refuse to participate" 
+                        label="Отказаться от участия" 
                         theme="danger"
                         wire:click='cancelParticipate'
                         />

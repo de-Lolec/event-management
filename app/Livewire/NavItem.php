@@ -10,16 +10,8 @@ class NavItem extends Component
 {
     public $event;
 
-    public $currentEventId = 0;
-
-    public function mount()
-    {
-        $this->currentEventId = Route::current()->parameter('id');
-    }
-
     public function render()
     {
         return view('livewire.nav-item');
     }
-
 }
