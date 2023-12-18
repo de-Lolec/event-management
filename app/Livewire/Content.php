@@ -31,9 +31,9 @@ class Content extends Component
 
     public function cancelParticipate(): void
     {
-        $user = Auth::user();
-
-        UserEvent::where('event_id', $this->event->id)->delete();
+        UserEvent::where('event_id', $this->event->id)
+        ->where('user_id', Auth::user()->id)
+        ->delete();
 
         $this->dispatch('user-participates');
     }

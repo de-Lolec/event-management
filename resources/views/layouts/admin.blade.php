@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 mt-4 ml-3">
-                    <h2>Select event</h2>
+                    <h2>Выберите событие</h2>
                 </div>
             </div>
         </div>

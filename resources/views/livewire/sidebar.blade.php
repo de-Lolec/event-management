@@ -9,9 +9,9 @@
             
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-            
-                    <button type="submit" class="btn btn-dark float-right ml-4">Logout</button>
+                    <button type="submit" class="btn btn-dark float-right ml-4">Выйти</button>
                 </form>
+
             </div>
         </div>
         <nav class="mt-2">
