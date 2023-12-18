@@ -11,7 +11,9 @@
     @php( $register_url = $register_url ? url($register_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.register_message'))
+@section('auth_header')
+    Регистрация
+@stop
 
 @section('auth_body')
     <form action="{{ $register_url }}" method="post">
@@ -20,7 +22,7 @@
         {{-- Login field --}}
         <div class="input-group mb-3">
             <input type="text" name="login" class="form-control @error('login') is-invalid @enderror"
-                   value="{{ old('login') }}" placeholder="Login" autofocus>
+                   value="{{ old('login') }}" placeholder="Логин" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -38,7 +40,7 @@
         {{-- Name field --}}
         <div class="input-group mb-3">
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                    value="{{ old('name') }}" placeholder="Name" autofocus>
+                    value="{{ old('name') }}" placeholder="Имя" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -56,7 +58,7 @@
         {{-- Surname field --}}
         <div class="input-group mb-3">
             <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror"
-                    value="{{ old('surname') }}" placeholder="Surname" autofocus>
+                    value="{{ old('surname') }}" placeholder="Фамлия" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -74,7 +76,7 @@
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                   placeholder="{{ __('adminlte::adminlte.password') }}">
+                   placeholder="Пароль">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -93,7 +95,7 @@
         <div class="input-group mb-3">
             <input type="password" name="password_confirmation"
                    class="form-control @error('password_confirmation') is-invalid @enderror"
-                   placeholder="{{ __('adminlte::adminlte.retype_password') }}">
+                   placeholder="Повторите пароль">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -111,7 +113,7 @@
         {{-- Register button --}}
         <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
             <span class="fas fa-user-plus"></span>
-            {{ __('adminlte::adminlte.register') }}
+            Зарегистрироваться
         </button>
 
     </form>
@@ -120,7 +122,7 @@
 @section('auth_footer')
     <p class="my-0">
         <a href="{{ $login_url }}">
-            {{ __('adminlte::adminlte.i_already_have_a_membership') }}
+            У меня уже есть аккаунт
         </a>
     </p>
 @stop

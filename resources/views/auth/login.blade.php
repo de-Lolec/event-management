@@ -18,7 +18,9 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.login_message'))
+@section('auth_header')
+Вход
+@stop
 
 @section('auth_body')
 
@@ -34,7 +36,7 @@
         {{-- Login field --}}
         <div class="input-group mb-3">
             <input type="text" name="login" class="form-control @error('login') is-invalid @enderror"
-                   value="{{ old('login') }}" placeholder="login" autofocus>
+                   value="{{ old('login') }}" placeholder="Логин" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -52,7 +54,7 @@
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                   placeholder="{{ __('adminlte::adminlte.password') }}">
+                   placeholder="Пароль">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -74,7 +76,7 @@
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                     <label for="remember">
-                        {{ __('adminlte::adminlte.remember_me') }}
+                        Запомнить меня
                     </label>
                 </div>
             </div>
@@ -95,7 +97,7 @@
     @if($register_url)
         <p class="my-0">
             <a href="{{ $register_url }}">
-                {{ __('adminlte::adminlte.register_a_new_membership') }}
+                Зарегистрироваться
             </a>
         </p>
     @endif
