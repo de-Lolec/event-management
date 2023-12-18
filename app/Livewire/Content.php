@@ -3,15 +3,25 @@
 namespace App\Livewire;
 
 use App\Models\Event;
+use App\Models\UserEvent;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
 class Content extends Component
 {
     public Event $event;
-  
+
+    public function mount()
+    {
+        session(['eventId' => $this->event->id]);
+        $this->dispatch('user-participates');
+    }
+
     public function render()
     {
+        session(['eventId' => $this->event->id]);
+
         return view('livewire.content');
     }
 
@@ -19,17 +29,25 @@ class Content extends Component
     {
         $user = Auth::user();
 
-        $eventParticipate = Event::create([
-            'title' => $this->event->title,
-            'text' => $this->event->text,
-            'creator_id' => $this->event->id,
-            'participant_id' => $user->id,
+        $eventParticipate = UserEvent::create([
+            'user_id' => $user->id,
+            'event_id' => $this->event->id,
         ]);
 
-        $this->dispatch('refresh');
+
+        $this->dispatch('set-current-event', eventId: $this->event->id);
+
+        session(['eventId' => $this->event->id]);
 
         $this->dispatch('user-participates');
+    }
 
-        redirect(route('event', $eventParticipate->id));
+    public function cancelParticipate(Event $event): void
+    {
+        $user = Auth::user();
+
+        UserEvent::where('event_id', $event->id)->delete();
+
+        $this->dispatch('user-participates');
     }
 }

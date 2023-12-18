@@ -39,8 +39,8 @@ class AdminController extends Controller
     public function show(string $id)
     {
         $event = Event::find($id);
-        
-        // dd($event);
+
+        session(['eventId' => $id]);
 
         return view("layouts.admin", compact("event"));
     }

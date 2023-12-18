@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Models\UserEvent;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
@@ -17,11 +18,7 @@ class Sidebar extends Component
 
     public function mount()
     {
-      $user = Auth::user();
-
-      $this->userCreatedEvents = $user->participatedEvents()->get();
-
-      $this->allEvents = Event::where('participant_id', '!=', $user->id)->get();
+        $this->updateSidebar();
     }
   
     public function render()
@@ -30,8 +27,12 @@ class Sidebar extends Component
     }
 
     #[On('user-participates')] 
-    public function participatedEvents(): void
+    public function updateSidebar(): void
     {
-        $this->dispatch('$refresh');
+        $user = Auth::user();
+
+        $this->userCreatedEvents = $user->participatedEvents()->get();
+  
+        $this->allEvents = Event::whereDoesntHave('participant')->get();
     }
 }

@@ -27,15 +27,18 @@
                       </div>
                       {{-- @dd($event->creator()->first()) --}}
                       {{-- @dd($event->participant()->where('id', auth()->user()->id)->exists()) --}}
-                      @if(!$event->participant()->where('id', auth()->user()->id)->exists())
+                      @if(!$event->participant()->where('user_id', auth()->user()->id)->exists())
                       <x-adminlte-button 
                         label="Участвовать" 
                         theme="primary" 
-                        wire:click='participate'/>
+                        wire:click='participate'
+                        />
                       @else
                         <x-adminlte-button 
                         label="Отказаться от участия" 
-                        theme="danger"/>
+                        theme="danger"
+                        wire:click='cancelParticipate({{ $event->id }})'
+                        />
                       @endif
                   </div>
                 </div>
