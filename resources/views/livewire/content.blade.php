@@ -13,7 +13,7 @@
                     <div class="row invoice-info">
                         <div class="col-md-4 invoice-col">
                           <p class="mb-0">{{ $event->text }}</p>
-                          <p>Дата: {{ $event->created_at->format('H:m d.m.y') }}</p>
+                          <p>Date: {{ $event->created_at->format('H:m d.m.y') }}</p>
                         </div>
                     </div>
                     <div>
@@ -21,23 +21,47 @@
                       <div class="table-responsive">
                         <ul class="ml-2 fa-ul ">
                           @foreach ($event->participant()->get() as $participant)
-                              <li>{{ $participant->name }} {{ $participant->surname }}</li>
+                              <li>
+                                <a href="#" 
+                                data-toggle="modal" 
+                                data-target="#modalPurple" >
+                                {{ $participant->name }}
+                                {{ $participant->surname }}
+                                </a>
+                              </li>
+                              <x-adminlte-modal id="modalPurple" title="Theme Purple" theme="purple" size='lg'>
+                                <ul class="ml-2 fa-ul ">
+                                    <li>
+                                        Login: {{ $participant->login }}
+                                    </li>
+                                    <li>
+                                        Name: {{ $participant->name }}
+                                    </li>
+                                    <li>
+                                        Surname: {{ $participant->surname }}
+                                    </li>
+                                    <li>
+                                        Date Birth: {{ $participant->date_birth }}
+                                    </li>
+                                    <li>
+                                        Registered: {{ $participant->created_at }}
+                                    </li>
+                                </ul>
+                              </x-adminlte-modal>
                           @endforeach
                       </ul>
                       </div>
-                      {{-- @dd($event->creator()->first()) --}}
-                      {{-- @dd($event->participant()->where('id', auth()->user()->id)->exists()) --}}
                       @if(!$event->participant()->where('user_id', auth()->user()->id)->exists())
                       <x-adminlte-button 
-                        label="Участвовать" 
+                        label="Participate" 
                         theme="primary" 
                         wire:click='participate'
                         />
                       @else
                         <x-adminlte-button 
-                        label="Отказаться от участия" 
+                        label="Refuse to participate" 
                         theme="danger"
-                        wire:click='cancelParticipate({{ $event->id }})'
+                        wire:click='cancelParticipate'
                         />
                       @endif
                   </div>

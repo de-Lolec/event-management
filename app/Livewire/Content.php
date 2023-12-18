@@ -42,11 +42,11 @@ class Content extends Component
         $this->dispatch('user-participates');
     }
 
-    public function cancelParticipate(Event $event): void
+    public function cancelParticipate(): void
     {
         $user = Auth::user();
 
-        UserEvent::where('event_id', $event->id)->delete();
+        UserEvent::where('event_id', $this->event->id)->delete();
 
         $this->dispatch('user-participates');
     }

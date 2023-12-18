@@ -15,11 +15,16 @@
 <div class="wrapper">
   <livewire:sidebar />
   <div class="content-wrapper" style="min-height: 1604.19px;">
-    {{-- <livewire:header :event="$event"/> --}}
     @if(isset($event))
       <livewire:content :event="$event"/>
     @else
-      <p>Пусто</p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-4 ml-3">
+                    <h2>Select event</h2>
+                </div>
+            </div>
+        </div>
     @endif
   </div>
 </div>

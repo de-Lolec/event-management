@@ -12,6 +12,8 @@ class AdminController extends Controller
      */
     public function index()
     {
+        session()->forget('eventId');
+        
         $events = Event::all();
 
         return view("layouts.admin", compact("events"));
