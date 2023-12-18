@@ -17,10 +17,28 @@
     <form action="{{ $register_url }}" method="post">
         @csrf
 
+        {{-- Login field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="login" class="form-control @error('login') is-invalid @enderror"
+                   value="{{ old('login') }}" placeholder="Login" autofocus>
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('login')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
         {{-- Name field --}}
         <div class="input-group mb-3">
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                   value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+                    value="{{ old('name') }}" placeholder="Name" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -38,7 +56,7 @@
         {{-- Surname field --}}
         <div class="input-group mb-3">
             <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror"
-                   value="{{ old('surname') }}" placeholder="Surname" autofocus>
+                    value="{{ old('surname') }}" placeholder="Surname" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -47,24 +65,6 @@
             </div>
 
             @error('surname')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-
-        {{-- Login field --}}
-        <div class="input-group mb-3">
-            <input name="login" class="form-control @error('login') is-invalid @enderror"
-                   value="{{ old('login') }}" placeholder="login">
-
-            <div class="input-group-append">
-                <div class="input-group-text">
-                    <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
-                </div>
-            </div>
-
-            @error('login')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [AdminController::class, 'index'])->name('admin');
+Route::middleware('auth')->get('/', [AdminController::class, 'index'])->name('admin');
 
-Route::get('/event/{id}', [AdminController::class, 'show'])->name('event');
+Route::middleware('auth')->get('/event/{id}', [AdminController::class, 'show'])->name('event');
