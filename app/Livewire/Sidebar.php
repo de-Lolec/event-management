@@ -33,6 +33,8 @@ class Sidebar extends Component
 
         $this->userCreatedEvents = $user->participatedEvents()->get();
   
-        $this->allEvents = Event::whereDoesntHave('participant')->get();
+        $this->allEvents = Event::whereDoesntHave('participant', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
     }
 }

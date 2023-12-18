@@ -21,7 +21,7 @@ class Content extends Component
     {
         $user = Auth::user();
 
-        $eventParticipate = UserEvent::create([
+        UserEvent::create([
             'user_id' => $user->id,
             'event_id' => $this->event->id,
         ]);
