@@ -25,3 +25,6 @@ Route::post('/login-user', [AuthController::class, 'login']);
 
 Route::post('/events', [EventController::class, 'create']);
 Route::get('/events', [EventController::class, 'index']);
+Route::post('/events/participate/{eventId}', [EventController::class, 'participate']);
+Route::delete('/events/cancel-participation/{eventId}', [EventController::class, 'cancelParticipation']);
+Route::delete('/events/delete/{eventId}', [EventController::class, 'deleteEvent']);
