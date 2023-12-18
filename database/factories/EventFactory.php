@@ -17,10 +17,9 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-          'title' => fake()->sentence(5),
+          'title' => fake()->sentence(3),
           'text' => fake()->text(),
           'creator_id' => \App\Models\User::factory(),
-          'participant_id' => \App\Models\User::factory(),
         ];
     }
 }
